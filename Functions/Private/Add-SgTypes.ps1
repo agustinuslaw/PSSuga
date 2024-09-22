@@ -15,6 +15,6 @@
 #>
 Function Add-SgTypes
 {   
-    $Artifact = Build-SgArtifactOnce "User32" "Suga.User32.dll"
+    $Artifact = Build-SgArtifactOnce "Util" "Suga.Util.dll"
     Add-Type -Path $Artifact 
 }

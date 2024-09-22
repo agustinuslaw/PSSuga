@@ -1,4 +1,5 @@
 Function Build-SgArtifactOnce ([String]$Subproject, [String]$ArtifactName) {
+    $ModulePath = Get-SgModulePath
     $Base = "$ModulePath\$Subproject"
     
     $ArtifactPath = "$Base\bin\$ArtifactName"
@@ -8,7 +9,6 @@ Function Build-SgArtifactOnce ([String]$Subproject, [String]$ArtifactName) {
 
         # Check again
         if (!(Test-Path $ArtifactPath)) {    
-            
             throw "Error: artifact $ArtifactPath was not created.`n$(Get-ChildItem "$Base\bin")"
         }
     }
