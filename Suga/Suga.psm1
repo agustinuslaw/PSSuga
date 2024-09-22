@@ -4,8 +4,8 @@
 
 #Get public and private function definition files.
 $script:SugaModulePath = $PSScriptRoot
-$Public  = @(gci -Path $SugaModulePath\Public\*.ps1 -ErrorAction SilentlyContinue)
-$Private = @(gci -Path $SugaModulePath\Private\*.ps1 -ErrorAction SilentlyContinue)
+$Public  = @(Get-ChildItem -Path $SugaModulePath\Public\*.ps1 -ErrorAction SilentlyContinue)
+$Private = @(Get-ChildItem -Path $SugaModulePath\Private\*.ps1 -ErrorAction SilentlyContinue)
 
 function Get-SgModulePath {
 	$SugaModulePath
@@ -25,4 +25,4 @@ Foreach($import in @($Public + $Private))
 }
 
 # Limit exposed functions to the ones in public
-Export-ModuleMember -Function $Public.Basename
+Export-ModuleMember -Function ($Public.Basename -replace "func_","")
