@@ -1,8 +1,21 @@
-# Taken from Strip-Progress https://gist.github.com/asheroto/96bcabe428e8ad134ef204573810041f
-# Mentioned in https://github.com/microsoft/winget-cli/issues/3494
+<#
+    .SYNOPSIS
+    Removes Winget Progress from StdOut and thus logging.
+
+    .DESCRIPTION
+	Removes Winget Progress from StdOut and thus logging.
+
+    .INPUTS
+    None. You can't pipe objects to this function.
+
+    .EXAMPLE
+    Clear-SgWingetProgress {winget install dotnet}
+#>
 Function Clear-SgWingetProgress {
+    # Taken from Strip-Progress https://gist.github.com/asheroto/96bcabe428e8ad134ef204573810041f
+    # Mentioned in https://github.com/microsoft/winget-cli/issues/3494
     
-    param(
+    Param(
         [Parameter(Mandatory=$true,Position=0)]
         [ScriptBlock]$ScriptBlock
     )
