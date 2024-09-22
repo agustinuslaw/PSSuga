@@ -3,9 +3,13 @@
 # . $PSScriptRoot\func_Write-HostLog.ps1
 
 #Get public and private function definition files.
-$Base = $PSScriptRoot
-$Public  = @(gci -Path $Base\Public\*.ps1 -ErrorAction SilentlyContinue)
-$Private = @(gci -Path $Base\Private\*.ps1 -ErrorAction SilentlyContinue)
+$script:SugaModulePath = $PSScriptRoot
+$Public  = @(gci -Path $SugaModulePath\Public\*.ps1 -ErrorAction SilentlyContinue)
+$Private = @(gci -Path $SugaModulePath\Private\*.ps1 -ErrorAction SilentlyContinue)
+
+function Get-SgModulePath {
+	$SugaModulePath
+}
 
 #Dot source the files
 Foreach($import in @($Public + $Private))
@@ -20,4 +24,5 @@ Foreach($import in @($Public + $Private))
 	}
 }
 
-# Export-ModuleMember -Function $Public.Basename
+# Limit exposed functions to the ones in public
+Export-ModuleMember -Function $Public.Basename
