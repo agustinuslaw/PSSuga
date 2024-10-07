@@ -5,7 +5,7 @@ Function Start-SgOnce {
 		,[String]$WorkDir
 		,[String[]]$Arg
 		,[switch]$Admin
-		,[Logger]$Logger
+		,[SgLogger]$Logger
 	)
 	
 	# Normalize inputs
