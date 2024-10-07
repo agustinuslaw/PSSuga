@@ -5,16 +5,10 @@ Function Start-SgOnce {
 		,[String]$WorkDir
 		,[String[]]$Arg
 		,[switch]$Admin
-		,[SgLogger]$Logger
+		,[String]$LogPath
 	)
-	
-	# Normalize inputs
-	$LogPath="$HOME/log"
-	if ($Logger -eq $null) {
-		$Logger=New-SgLogger
-	} else {
-		$LogPath=$Logger.Path
-	}
+
+	$Logger=New-SgLogger -Path $LogPath
 	
 	$Filter=Get-SgStringOrDefault $Filter "Name='$FilePath'"
 	$WorkDir=Get-SgStringOrDefault $WorkDir "."

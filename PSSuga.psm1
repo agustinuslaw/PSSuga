@@ -11,7 +11,7 @@ function Get-SgModulePath {
 }
 
 #Dot source the files
-Foreach($import in @($Public + $Private))
+Foreach($import in @($Private + $Public))
 {
 	Try
 	{

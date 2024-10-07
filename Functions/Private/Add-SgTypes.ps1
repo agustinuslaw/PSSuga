@@ -15,6 +15,6 @@
 #>
 Function Add-SgTypes
 {   
-    $Artifact = Build-SgArtifactOnce "Util" "Suga.Util.dll"
-    Add-Type -Path $Artifact 
+    $ArtifactPath = Build-SgArtifactOnce -Subproject "Util" -ArtifactName "Suga.Util.dll"
+    Add-Type -Path $ArtifactPath 
 }
